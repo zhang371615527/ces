@@ -1,0 +1,3780 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AnyWise.Framework.ControlUtil</name>
+    </assembly>
+    <members>
+        <member name="T:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1">
+            <summary>
+            数据访问层的超级基类，所有数据库的数据访问基类都继承自这个超级基类，包括Oracle、SqlServer、Sqlite、MySql、Access等
+             Microsoft EnterpriseLibrary 原生支持的扩展
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.#ctor(System.String,System.String)">
+            <summary>
+            指定表名以及主键,对基类进构造
+            </summary>
+            <param name="tableName">表名</param>
+            <param name="primaryKey">表主键</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.CreateDatabase">
+            <summary>
+            根据配置数据库配置名称生成Database对象
+            </summary>
+            <returns>Database对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.CreateTransaction">
+            <summary>
+            打开数据库连接，并创建事务对象
+            </summary>
+            <returns>DbTransaction 对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.DataReaderToEntity(System.Data.IDataReader)">
+            <summary>
+            将DataReader的属性值转化为实体类的属性值，返回实体类
+            </summary>
+            <param name="dr">有效的DataReader对象</param>
+            <returns>实体类对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Delete(System.Object)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Delete(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.DeleteByCondition(System.String)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.DeleteByCondition(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.DeleteByCondition(System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <param name="paramList">参数列表</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Find(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Find(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Find(System.String,System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <param name="paramList">参数列表</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindByID(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <param name="trans">事务对象</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindByIDs(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">D字符串(逗号分隔)</param>
+            <param name="trans">事务对象</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindByIDs(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">D字符串(逗号分隔)</param>
+            <param name="trans">事务对象</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindByView(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindByView(System.String,System.String,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="trans">事务</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="info">分页条件</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindFirst(System.Data.Common.DbTransaction)">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <param name="trans">事务对象</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindLast(System.Data.Common.DbTransaction)">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <param name="trans">事务对象</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindSingle(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务对象</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindSingle(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <param name="trans">事务对象</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindSingle(System.String,System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <param name="paramList">参数列表</param>
+            <param name="trans">事务对象</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindToDataTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindToDataTable(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页条件</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindToDataTable(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAll(System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAll(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAll(AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAll(AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <param name="trans">事务对象</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAllToDataTable(System.Data.Common.DbTransaction)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAllToDataTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAllToDataTable(AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetAllToDataTable(AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <param name="trans">事务对象</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetDataTableBySql(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            操根据条件返回DataTable集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="trans">事务</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetFieldList(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="trans">事务对象</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetFieldListByCondition(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务对象</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetFieldValue(System.Object,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <param name="trans">事务对象</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetHashByEntity(`0)">
+            <summary>
+            将实体对象的属性值转化为Hashtable对应的键值(用于插入或者更新操作)
+            </summary>
+            <param name="obj">有效的实体对象</param>
+            <returns>包含键值映射的Hashtable</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetList(System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            SQL语句查询集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="paramList">参数列表</param>
+            <param name="trans">事务</param>
+            <returns>指定的列表集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetListWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            SQL语句查询集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="info">分页</param>
+            <param name="paramList">参数列表</param>
+            <param name="trans">事务</param>
+            <returns>指定的列表集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetMaxID(System.Data.Common.DbTransaction)">
+            <summary>
+            获得主键的最大数值
+            </summary>
+            <param name="trans">事务</param>
+            <returns>Int型最大数值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetRecordCount(System.Data.Common.DbTransaction)">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <param name="trans">事务</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetRecordCount(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetSafeFileName(System.String)">
+            <summary>
+            生成防止和保留字、关键字同名的字段格式，如[value]。
+            </summary>
+            <param name="fieldName">字段名，如value</param>
+            <returns>字段名</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetSubValue(System.String,System.String)">
+            <summary>
+            获取指定字符串中的子项的值
+            </summary>
+            <param name="connectionString">连接字符串</param>
+            <param name="subKeyName">以分号(;)为分隔符的子项名称</param>
+            <returns>对应子项名称的值（即是=号后面的值）</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.GetTopResult(System.String,System.Int32,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            查询前N条数据集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="count">条数/行数</param>
+            <param name="orderBy">排序</param>
+            <param name="trans">事务</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.HasInjectionData(System.String)">
+            <summary>
+            验证是否存在注入代码(条件语句）
+            </summary>
+            <param name="inputData">输入字符串</param>
+            <returns>是返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.InitTableName(System.String)">
+            <summary>
+            初始化数据库表名
+            </summary>
+            <param name="tableName">数据库表名</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert(System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            添加记录
+            </summary>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert(`0,System.Data.Common.DbTransaction)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="trans">事务对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert(System.Collections.Hashtable,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            添加记录
+            </summary>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="targetTable">需要操作的目标表名称</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert2(System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            添加记录
+            </summary>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert2(`0,System.Data.Common.DbTransaction)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Insert2(System.Collections.Hashtable,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            添加记录
+            </summary>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="targetTable">需要操作的目标表名称</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.InsertIfNew(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.InsertUpdate(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.IsExistKey(System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="recordTable">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="trans">事务</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.IsExistKey(System.String,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <param name="trans">事务</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.IsExistRecord(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="trans">事务</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.PrivateUpdate(System.Object,System.Collections.Hashtable,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新某个表一条记录
+            </summary>
+            <param name="id">ID值</param>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="targetTable">需要操作的目标表名称</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SqlExecute(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="trans">事务对象</param>
+            <returns>影响的行数</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SqlTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <param name="trans">事务</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SqlTable(System.String,System.Data.Common.DbParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <param name="parameters">参数集合</param>
+            <param name="trans">事务</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SqlValueList(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="trans">事务</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.StoreProcExecute(System.String,System.Data.Common.DbParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="storeProcName">存储过程名称</param>
+            <param name="parameters">参数列表</param>
+            <param name="trans">事务</param>
+            <returns>影响的行数</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.TestConnection(System.String)">
+            <summary>
+            测试连接
+            </summary>
+            <param name="connectionString">连接字符串</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.TypeToDbType(System.Type)">
+            <summary>
+            转换.NET的对象类型到数据库类型
+            </summary>
+            <param name="t">.NET的对象类型</param>
+            <returns>.NET的对象数据类型</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(`0,System.String)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(System.Data.CommandType,System.String)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="commandType">SQL类型</param>
+            <param name="sql">SQL类型</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(System.Object,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            更新某个表一条记录(只适用于用单键,用int类型作键值的表)
+            </summary>
+            <param name="id">ID值</param>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(System.Data.CommandType,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="commandType">SQL类型</param>
+            <param name="sql">SQL类型</param>
+            <param name="trans">sql或者存储过程</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.Update(System.Object,System.Collections.Hashtable,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新某个表一条记录(只适用于用单键,用string类型作键值的表)
+            </summary>
+            <param name="id">ID</param>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="targetTable">需要操作的目标表名称</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.DbConfigName">
+            <summary>
+            数据库配置名称，默认为空。
+            可在子类指定不同的配置名称，用于访问不同的数据库
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.IsDescending">
+            <summary>
+            是否为降序
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.ParameterPrefix">
+            <summary>
+            数据库参数化访问的占位符
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.PrimaryKey">
+            <summary>
+            数据库访问对象的外键约束
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SafeFieldFormat">
+             <summary>
+             防止和保留字、关键字同名的字段格式，如[value]。
+            不同数据库类型的BaseDAL需要进行修改
+             </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SelectedFields">
+            <summary>
+            选择的字段，默认为所有(*)
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.SortField">
+            <summary>
+            排序字段
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.AbstractBaseDAL`1.TableName">
+            <summary>
+            数据库访问对象的表名
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.BaseBLL`1">
+            <summary>
+            业务基类对象
+            </summary>
+            <typeparam name="T">业务对象类型</typeparam>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.BaseBLL`1.baseDal">
+            <summary>
+            基础数据访问层接口对象
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.BaseBLL`1.bllFullName">
+            <summary>
+            BLL业务类的全名（子类必须实现）
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.BaseBLL`1.bllPrefix">
+            <summary>
+            BLL命名空间的前缀（BLL.)
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.BaseBLL`1.dalAssemblyName">
+            <summary>
+            数据访问层程序集的清单文件的文件名，不包括其扩展名
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.BaseBLL`1.newBllFullName">
+            <summary>
+            根据不同数据库类型创建的BLL业务类的全名
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.#ctor">
+            <summary>
+            默认构造函数，调用后需手动调用一次 Init() 方法进行对象初始化
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.CheckDAL">
+            <summary>
+            调用前检查baseDal是否为空引用
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.CreateTransaction">
+            <summary>
+            打开数据库连接，并创建事务对象
+            </summary>
+            <returns>DbTransaction 对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.CreateTransaction(System.Data.IsolationLevel)">
+            <summary>
+            
+            </summary>
+            <param name="level"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Delete(System.Object)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Delete(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.DeleteByCondition(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Find(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Find(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindByID(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindByIDs(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="key">ID字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindByIDs(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">D字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindByView(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindByView(System.String,System.String,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindFirst(System.Data.Common.DbTransaction)">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindLast(System.Data.Common.DbTransaction)">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindSingle(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindSingle(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindToDataTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindToDataTable(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindToDataTable(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAll(System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAll(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAll(AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAll(AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAllToDataTable(System.Data.Common.DbTransaction)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAllToDataTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAllToDataTable(AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetAllToDataTable(AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetFieldList(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetFieldListByCondition(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetFieldValue(System.Object,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetRecordCount(System.Data.Common.DbTransaction)">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetRecordCount(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Init(System.String,System.String,System.String,System.String)">
+            <summary>
+            参数赋值后，初始化相关对象
+            </summary>
+            <param name="bllFullName">BLL业务类的全名（子类必须实现）,子类构造函数传入this.GetType().FullName</param>
+            <param name="dalAssemblyName">数据访问层程序集的清单文件的文件名，不包括其扩展名。设置为NULL或默认为Assembly.GetExecutingAssembly().GetName().Name</param>
+            <param name="bllPrefix">BLL命名空间的前缀（BLL.)</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.InitTableName(System.String)">
+            <summary>
+            初始化数据库表名
+            </summary>
+            <param name="tableName">数据库表名</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Insert(`0,System.Data.Common.DbTransaction)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="trans">事务对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Insert2(`0,System.Data.Common.DbTransaction)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.InsertIfNew(`0,System.Object)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.InsertIfNew(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.InsertUpdate(`0,System.Object)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.InsertUpdate(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.IsExistKey(System.String,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.IsExistRecord(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.SqlTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.SqlTable(System.String,System.Data.Common.DbParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <param name="parameters">参数集合</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.SqlValueList(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Update(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Update(System.Data.CommandType,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="commandType">SQL类型</param>
+            <param name="sql">SQL类型</param>
+            <param name="trans">sql或者存储过程</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BaseBLL`1.Update(System.Object,System.Collections.Hashtable,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新某个表一条记录(只适用于用单键,用string类型作键值的表)
+            </summary>
+            <param name="id">ID</param>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="targetTable">需要操作的目标表名称</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.IBaseDAL`1">
+            <summary>
+            数据访问层的接口
+            </summary>
+            <typeparam name="T">实体对象</typeparam>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.CreateTransaction">
+            <summary>
+            打开数据库连接，并创建事务对象
+            </summary>
+            <returns>DbTransaction 对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Delete(System.Object)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Delete(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.DeleteByCondition(System.String)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.DeleteByCondition(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.DeleteByCondition(System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <param name="trans">事务对象</param>
+            <param name="paramList">参数列表</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Find(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Find(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Find(System.String,System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <param name="paramList">参数列表</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindByID(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindByIDs(System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="key">ID字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindByIDs(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">D字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindByView(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindByView(System.String,System.String,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindFirst(System.Data.Common.DbTransaction)">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindLast(System.Data.Common.DbTransaction)">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindSingle(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindSingle(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindSingle(System.String,System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <param name="paramList">参数列表</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindToDataTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindToDataTable(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindToDataTable(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAll(System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAll(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAll(AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAll(AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAllToDataTable(System.Data.Common.DbTransaction)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAllToDataTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAllToDataTable(AnyWise.Pager.Entity.PagerInfo,System.Data.Common.DbTransaction)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetAllToDataTable(AnyWise.Pager.Entity.PagerInfo,System.String,System.Boolean,System.Data.Common.DbTransaction)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetFieldList(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetFieldListByCondition(System.String,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetFieldValue(System.Object,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetList(System.String,System.Data.IDbDataParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            SQL语句查询集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="paramList">参数列表</param>
+            <returns>指定的列表集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetMaxID(System.Data.Common.DbTransaction)">
+            <summary>
+            获得主键的最大数值
+            </summary>
+            <returns>Int型最大数值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetRecordCount(System.Data.Common.DbTransaction)">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetRecordCount(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.GetTopResult(System.String,System.Int32,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            查询前N条数据集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="count">条数/行数</param>
+            <param name="orderBy">排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.InitTableName(System.String)">
+            <summary>
+            初始化数据库表名
+            </summary>
+            <param name="tableName">数据库表名</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Insert(`0,System.Data.Common.DbTransaction)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="trans">事务对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Insert2(`0,System.Data.Common.DbTransaction)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.InsertIfNew(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.InsertUpdate(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.IsExistKey(System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="recordTable">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.IsExistKey(System.String,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.IsExistRecord(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.SqlExecute(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="trans">事务对象</param>
+            <returns>影响的行数</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.SqlTable(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.SqlTable(System.String,System.Data.Common.DbParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <param name="parameters">参数集合</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.SqlValueList(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.StoreProcExecute(System.String,System.Data.Common.DbParameter[],System.Data.Common.DbTransaction)">
+            <summary>
+            执行存储过程
+            </summary>
+            <param name="storeProcName">存储过程名称</param>
+            <param name="parameters">参数列表</param>
+            <returns>影响的行数</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.TestConnection(System.String)">
+            <summary>
+            测试连接
+            </summary>
+            <param name="connectionString">连接字符串</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Update(System.Data.CommandType,System.String)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="commandType">SQL类型</param>
+            <param name="sql">SQL类型</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Update(`0,System.Object,System.Data.Common.DbTransaction)">
+            <summary>
+            更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <param name="trans">事务对象</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Update(System.Data.CommandType,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="commandType">SQL类型</param>
+            <param name="sql">SQL类型</param>
+            <param name="trans">sql或者存储过程</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.IBaseDAL`1.Update(System.Object,System.Collections.Hashtable,System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            更新某个表一条记录(只适用于用单键,用string类型作键值的表)
+            </summary>
+            <param name="id">ID</param>
+            <param name="recordField">Hashtable:键[key]为字段名;值[value]为字段对应的值</param>
+            <param name="targetTable">需要操作的目标表名称</param>
+            <param name="trans">事务对象,如果使用事务,传入事务对象,否则为Null不使用事务</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.BaseEntity">
+            <summary>
+            框架实体类的基类
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.BaseEntity.DataForeignKey1">
+            <summary>
+            用来给实体类传递一些额外的数据，如外键的转义等，该字段不保存到数据表中
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.BaseEntity.DataForeignKey2">
+            <summary>
+            用来给实体类传递一些额外的数据，如外键的转义等，该字段不保存到数据表中
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.BaseEntity.DataForeignKey3">
+            <summary>
+            用来给实体类传递一些额外的数据，如外键的转义等，该字段不保存到数据表中
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.BaseEntity.CurrentLoginUserId">
+            <summary>
+            当前登录用户ID
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.BLLFactory`1">
+            <summary>
+            对业务类进行构造的工厂类
+            </summary>
+            <typeparam name="T">业务对象类型</typeparam>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.BLLFactory`1.#cctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.BLLFactory`1.Instance">
+            <summary>
+            创建或者从缓存中获取对应业务类的实例
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.ExtensionMethod">
+            <summary>
+            原生扩展方法
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.ExtensionMethod.HtmlDecode(System.String)">
+            <summary>
+            HTML字符串解码。
+            </summary>
+            <param name="html">要解码的字符串。</param>
+            <returns>已解码的字符串。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.ExtensionMethod.HtmlEncode(System.String)">
+            <summary>
+            HTML字符串编码。
+            </summary>
+            <param name="html">要编码的字符串。</param>
+            <returns>已编码的字符串。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.ExtensionMethod.ToJson(System.Object)">
+            <summary>
+            对象转JSON字符串
+            </summary>
+            <param name="obj">要序列化的对象</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.ExtensionMethod.UrlDecode(System.String)">
+            <summary>
+            URL字符串解码。
+            </summary>
+            <param name="url">要解码的字符串。</param>
+            <returns>已解码的字符串。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.ExtensionMethod.UrlEncode(System.String)">
+            <summary>
+            对 URL 字符串进行编码
+            </summary>
+            <param name="url">要编码的文本。</param>
+            <returns>已编码的字符串。</returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1">
+            <summary>
+            基于WebApi数据访问方式的基础API包装类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.NormalApiService">
+            <summary>
+            基于WebApi数据访问方式的基类
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.NormalApiService.NoSignatureInfo_MsgError">
+            <summary>
+            签名错误信息：没有在缓存里面设置SignatureInfo签名信息
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.NormalApiService.signatureInfo">
+            <summary>
+            签名
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.NormalApiService.config">
+            <summary>
+            配置文件读取
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.NormalApiService.configurationName">
+            <summary>
+            配置节名称
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.NormalApiService.helper">
+            <summary>
+            Http帮助类
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.NormalApiService.configPath">
+            <summary>
+            Api配置文件路径，默认：“ApiConfig.config”
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.#ctor(System.String,System.String)">
+            <summary>
+            使用自定义节点配置
+            </summary>
+            <param name="configurationName">配置节点名称</param>
+            <param name="configurationPath">配置路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.CombindUrl(System.String,System.String)">
+            <summary>
+            合并Api URL路径
+            </summary>
+            <param name="url">原始Api URL</param>
+            <param name="action">行为名称，一般指Api里的函数名称</param>
+            <returns>一个合并后的Api URL</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetNormalUrl(System.String)">
+            <summary>
+            常规Api URL，不包含令牌、签名等参数
+            </summary>
+            <param name="action">行为名称，一般指Api里的函数名称</param>
+            <returns>一个合并后的Api URL</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetPostUrl(System.String)">
+            <summary>
+            Api URL，包含签名等参数
+            </summary>
+            <param name="action">行为名称，一般指Api里的函数名称</param>
+            <returns>一个合并后的Api URL</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetPostUrlWithToken(System.String)">
+            <summary>
+            Api URL，包含令牌、签名等参数
+            </summary>
+            <param name="action">行为名称，一般指Api里的函数名称</param>
+            <returns>一个合并后的Api URL</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetSignatureUrl(System.String,System.String,System.String)">
+            <summary>
+            令牌、签名等参数的组合
+            </summary>
+            <param name="appId">应用接入Id</param>
+            <param name="appSecret">密钥</param>
+            <param name="token">令牌</param>
+            <returns>Api URL后的参数组合字符串</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetSignatureUrl(System.String,System.String,System.String,System.String)">
+            <summary>
+            签名等参数的组合
+            </summary>
+            <param name="appId">应用接入Id</param>
+            <param name="appSecret">密钥</param>
+            <param name="timestamp">时间戳</param>
+            <param name="nonce">随机字符串</param>
+            <returns>签名参数的组合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetTokenUrl(System.String)">
+            <summary>
+            Api URL，包含令牌参数
+            </summary>
+            <param name="action">行为名称，一般指Api里的函数名称</param>
+            <returns>一个合并后的Api URL</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.SignatureString(System.String,System.String,System.String)">
+            <summary>
+            排序并SHA1加密后的签名信息
+            </summary>
+            <param name="appSecret">密钥</param>
+            <param name="timestamp">时间戳</param>
+            <param name="nonce">随机字符串</param>
+            <returns>签名信息</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.NormalApiService.GetBaseUrl">
+            <summary>
+            原始 Api URL
+            </summary>
+            <returns>Api URL</returns>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.NormalApiService.ConfigurationPath">
+            <summary>
+            API配置文件路径
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.NormalApiService.SignatureInfo">
+            <summary>
+            签名信息，有责从缓存里取出
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.NormalApiService.DictionarySort">
+            <summary>
+            字典排序
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.IBaseService`1">
+            <summary>
+            基于Facade业务模式定义的接口，可以使用WebAPI、WCF、传统本地访问等模式进行获取数据的公共接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Delete(System.String)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象(用于字符主键)
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Delete2(System.Int32)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象(用于整型主键)
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.DeleteByCondition(System.String)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Find(System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Find2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindByID(System.String)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindByID2(System.Int32)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindByIDs(System.String)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">ID字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindByView(System.String,System.String)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindByView2(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindFirst">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindLast">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindSingle(System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindSingle2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindToDataTable(System.String)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindToDataTableWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindToDataTableWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.FindWithPager3(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAll">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAll2(System.String)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAll3(AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAllToDataTable">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAllToDataTable2(System.String)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAllToDataTableWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAllToDataTableWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAllWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetAllWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetFieldList(System.String)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetFieldListByCondition(System.String,System.String)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetFieldValue(System.String,System.String)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetRecordCount">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetRecordCount2(System.String)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.InsertIfNew(`0,System.Object)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.InsertUpdate(`0,System.Object)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.IsExistKey(System.String,System.Object)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.IsExistRecord(System.String)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.SqlTable(System.String)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.SqlValueList(System.String)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.IBaseService`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.#ctor(System.String,System.String)">
+            <summary>
+            使用自定义节点配置
+            </summary>
+            <param name="configurationName">配置节点名称</param>
+            <param name="configurationPath">配置路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Delete(System.String)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Delete2(System.Int32)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.DeleteByCondition(System.String)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.DeleteByIds(System.String)">
+            <summary>
+            根据ID字符串(逗号分隔)删除数据列表
+            </summary>
+            <param name="ids">ID字符串(逗号分隔)</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Find(System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Find2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindByID(System.String)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindByID2(System.Int32)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindByIDs(System.String)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">D字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindByView(System.String,System.String)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindByView2(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="pagerInfo">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindFirst">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindLast">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindSingle(System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindSingle2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindToDataTable(System.String)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindToDataTableWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindToDataTableWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="desc">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.FindWithPager3(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="desc">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAll">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAll2(System.String)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAll3(AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="pagerInfo">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAllToDataTable">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAllToDataTable2(System.String)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAllToDataTableWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="pagerInfo">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAllToDataTableWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="pagerInfo">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="desc">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAllWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="pagerInfo">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetAllWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="pagerInfo">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="desc">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetFieldList(System.String)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetFieldListByCondition(System.String,System.String)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetFieldValue(System.String,System.String)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetRecordCount">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetRecordCount2(System.String)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.InsertIfNew(`0,System.Object)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.InsertUpdate(`0,System.Object)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.IsExistKey(System.String,System.Object)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.IsExistRecord(System.String)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.SqlTable(System.String)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.SqlValueList(System.String)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseApiService`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1">
+            <summary>
+            基于Winform的基础API包装类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.baseBLL">
+            <summary>
+            基础业务对象
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.#ctor(AnyWise.Framework.ControlUtil.BaseBLL{`0})">
+            <summary>
+            使用业务对象构造对象
+            </summary>
+            <param name="bll"></param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Delete(System.String)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Delete2(System.Int32)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.DeleteByCondition(System.String)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Find(System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Find2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindByID(System.String)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindByID2(System.Int32)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindByIDs(System.String)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">ID字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindByView(System.String,System.String)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindByView2(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindFirst">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindLast">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindSingle(System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindSingle2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindToDataTable(System.String)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindToDataTableWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="pagerInfo">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindToDataTableWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.FindWithPager3(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAll">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAll2(System.String)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAll3(AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAllToDataTable">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAllToDataTable2(System.String)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAllToDataTableWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAllToDataTableWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAllWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetAllWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetFieldList(System.String)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetFieldListByCondition(System.String,System.String)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetFieldValue(System.String,System.String)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetRecordCount">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetRecordCount2(System.String)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.InsertIfNew(`0,System.Object)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.InsertUpdate(`0,System.Object)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.IsExistKey(System.String,System.Object)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.IsExistRecord(System.String)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.SqlTable(System.String)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.SqlValueList(System.String)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseLocalService`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.BaseResultJson">
+            <summary>
+            基本结果集
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseResultJson.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseResultJson.#ctor(System.Exception,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ex">异常信息</param>
+            <param name="errcode">错误代码</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseResultJson.#ctor(System.String,System.Boolean,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errmsg">错误信息</param>
+            <param name="success">是否成功</param>
+            <param name="errcode">错误代码</param>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.BaseResultJson.errcode">
+            <summary>
+            错误代码
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.BaseResultJson.errmsg">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.BaseResultJson.success">
+            <summary>
+            是否成功，没有错误消息
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1">
+            <summary>
+            基于WCF数据访问方式的基础API包装类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.configPath">
+            <summary>
+            WCF配置文件, 默认为"WcfConfig.config"
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.endpointConfigurationName">
+            <summary>
+            服务配置节点,在子类中配置
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.appConfig">
+            <summary>
+            app配置节
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.#ctor">
+            <summary>
+            默认构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.#ctor(System.String,System.String)">
+            <summary>
+            使用自定义终结点配置
+            </summary>
+            <param name="endpointConfigurationName">终结点配置项名称</param>
+            <param name="configurationPath">配置路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.CreateClient">
+            <summary>
+            子类构造一个ChannelFactory，方便给基类进行调用通用的API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Delete(System.String)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Delete2(System.Int32)">
+            <summary>
+            根据指定对象的ID,从数据库中删除指定对象
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.DeleteByCondition(System.String)">
+            <summary>
+            根据指定条件,从数据库中删除指定对象
+            </summary>
+            <param name="condition">删除记录的条件语句</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Find(System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Find2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindByID(System.String)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindByID2(System.Int32)">
+            <summary>
+            查询数据库,检查是否存在指定ID的对象
+            </summary>
+            <param name="key">对象的ID值</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindByIDs(System.String)">
+            <summary>
+            根据ID字符串(逗号分隔)获取对象列表
+            </summary>
+            <param name="idString">D字符串(逗号分隔)</param>
+            <returns>符合条件的对象列表</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindByView(System.String,System.String)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindByView2(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindByViewWithPager(System.String,System.String,System.String,System.Boolean,AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            根据条件，从视图里面获取记录
+            </summary>
+            <param name="viewName">视图名称</param>
+            <param name="condition">查询条件</param>
+            <param name="sortField">排序字段</param>
+            <param name="isDescending">是否为降序</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindFirst">
+            <summary>
+            查找记录表中最旧的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindLast">
+            <summary>
+            查找记录表中最新的一条记录
+            </summary>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindSingle(System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindSingle2(System.String,System.String)">
+            <summary>
+            根据条件查询数据库,如果存在返回第一个对象
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="orderBy">排序条件</param>
+            <returns>存在则返回指定的对象,否则返回Null</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindToDataTable(System.String)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindToDataTableWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据查询条件，返回记录到DataTable集合中
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindToDataTableWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回DataTable集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindWithPager(System.String,AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindWithPager2(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.FindWithPager3(System.String,AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据条件查询数据库,并返回对象集合(用于分页数据显示)
+            </summary>
+            <param name="condition">查询条件</param>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAll">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAll2(System.String)">
+            <summary>
+            返回数据库所有的对象集合
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAll3(AnyWise.Pager.Entity.PagerInfo)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAllToDataTable">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAllToDataTable2(System.String)">
+            <summary>
+            返回所有记录到DataTable集合中
+            </summary>
+            <param name="orderBy">自定义排序语句，如Order By Name Desc；如不指定，则使用默认排序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAllToDataTableWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAllToDataTableWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            根据分页条件，返回DataTable集合
+            </summary>
+            <param name="info">分页条件</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAllWithPager(AnyWise.Pager.Entity.PagerInfo@)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetAllWithPager2(AnyWise.Pager.Entity.PagerInfo@,System.String,System.Boolean)">
+            <summary>
+            返回数据库所有的对象集合(用于分页数据显示)
+            </summary>
+            <param name="info">分页实体</param>
+            <param name="fieldToSort">排序字段</param>
+            <param name="isDescending">是否降序</param>
+            <returns>指定对象的集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetColumnNameAlias">
+            <summary>
+            获取字段中文别名（用于界面显示）的字典集合
+            </summary>
+            <returns>Dictionary集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetFieldList(System.String)">
+            <summary>
+            获取字段列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetFieldListByCondition(System.String,System.String)">
+            <summary>
+            根据条件，获取某字段数据字典列表
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <param name="condition">查询条件</param>
+            <returns>对象集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetFieldTypeList">
+            <summary>
+            获取表的字段名称和数据类型列表
+            </summary>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetFieldValue(System.String,System.String)">
+            <summary>
+            根据主键和字段名称，获取对应字段的内容
+            </summary>
+            <param name="key">指定对象的ID</param>
+            <param name="fieldName">字段名称</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetRecordCount">
+            <summary>
+            获取表的所有记录数量
+            </summary>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetRecordCount2(System.String)">
+            <summary>
+            获取表的指定条件记录数量
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.GetReportData(System.String,System.String)">
+            <summary>
+            获取指定字段的报表数据
+            </summary>
+            <param name="fieldName">字段</param>
+            <param name="condition">查询条件</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Insert(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行操作是否成功</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Insert2(`0)">
+            <summary>
+            插入指定对象到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <returns>执行成功返回新增记录的自增长ID。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.InsertIfNew(`0,System.Object)">
+            <summary>
+            如果不存在记录，则插入对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行插入成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.InsertUpdate(`0,System.Object)">
+            <summary>
+            插入或更新对象属性到数据库中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.IsExistKey(System.String,System.Object)">
+            <summary>
+            检查是否存在指定键值的对象
+            </summary>
+            <param name="fieldName">指定的属性名</param>
+            <param name="key">指定的值</param>
+            <returns>存在则返回true，否则为false。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.IsExistRecord(System.String)">
+            <summary>
+            根据condition条件，判断是否存在记录
+            </summary>
+            <param name="condition">查询条件</param>
+            <returns>如果存在返回True，否则False。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.SqlTable(System.String)">
+            <summary>
+            执行SQL查询语句，返回所有记录的DataTable集合。
+            </summary>
+            <param name="sql">SQL查询语句</param>
+            <returns>DataTable集合</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.SqlValueList(System.String)">
+            <summary>
+            执行SQL查询语句，返回查询结果的所有记录的第一个字段,用逗号分隔。
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns>返回查询结果的所有记录的第一个字段,用逗号分隔。</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.Update(`0,System.Object)">
+            <summary>
+            更新数据到数据表中
+            </summary>
+            <param name="obj">指定的对象</param>
+            <param name="primaryKeyValue">主键的值</param>
+            <returns>执行成功返回true，否则为false。</returns>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.BaseWCFService`1.ConfigurationPath">
+            <summary>
+            WCF配置文件路径
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1">
+            <summary>
+            混合式框架，不同调用方式的工厂类（支持WebApi、WCF或Win【Local本地】等方式）
+            </summary>
+            <typeparam name="T">接口类型</typeparam>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.syncRoot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.callerNamespace">
+            <summary>
+            CallerFactory命名空间
+            </summary>
+        </member>
+        <member name="F:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.objCatche">
+            <summary>
+            CallerFactory缓存列表
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.#cctor">
+            <summary>
+            静态构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.LoadAssembly">
+            <summary>
+            通过给定程序集的长格式名称加载程序集。
+            </summary>
+            <returns>DLL程序集</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.CreateInstance">
+            <summary>
+            创建实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.CallerFactory`1.Instance">
+            <summary>
+            创建或者从缓存中获取对应接口的实例
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1">
+            <summary>
+            自定义的客户端信道(允许从自定义的配置文件中加载)
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configurationPath">定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.ServiceModel.Channels.Binding,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="binding">绑定</param>
+            <param name="configurationPath">自定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.ServiceModel.Description.ServiceEndpoint,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="serviceEndpoint">终结点</param>
+            <param name="configurationPath">自定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="endpointConfigurationName">终结点名称</param>
+            <param name="configurationPath">自定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.String,System.TimeSpan)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configurationPath">自定义配置文件路径</param>
+            <param name="timeout">超时时间</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="binding">绑定</param>
+            <param name="endpointAddress">终结点地址</param>
+            <param name="configurationPath">自定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.ServiceModel.Channels.Binding,System.String,System.String)">
+            <summary>
+            构造函数 
+            </summary>
+            <param name="binding">绑定</param>
+            <param name="remoteAddress">终结点地址</param>
+            <param name="configurationPath">自定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.#ctor(System.String,System.ServiceModel.EndpointAddress,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="endpointConfigurationName">终结点名称</param>
+            <param name="endpointAddress">终结点地址</param>
+            <param name="configurationPath">自定义配置文件路径</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.ApplyConfiguration(System.String)">
+            <summary>
+            应用配置内容
+            </summary>
+            <param name="configurationName">配置节点名称</param>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.CreateDescription">
+            <summary>
+            指定的配置文件中加载服务终结点
+            </summary>
+            <returns>节点</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.GetIdentity(System.ServiceModel.Configuration.IdentityElement)">
+            <summary>
+            从配置文件重获取终结点的identity 
+            </summary>
+            <param name="element">配置元素</param>
+            <returns>终结点标识</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.CreateBinding(System.String,System.ServiceModel.Configuration.ServiceModelSectionGroup)">
+            <summary>
+            为所选择的终结点配置绑定
+            </summary>
+            <param name="bindingName">绑定名称</param>
+            <param name="group">主配置节</param>
+            <returns>绑定</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.GetBinding(System.ServiceModel.Configuration.IBindingConfigurationElement)">
+            <summary>
+            一些创建匹配绑定的方法
+            </summary>
+            <param name="configurationElement">配置元素</param>
+            <returns>绑定</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.CustomClientChannel`1.AddBehaviors(System.String,System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Configuration.ServiceModelSectionGroup)">
+            <summary>
+            添加configured behavior 到所选择的终结点
+            </summary>
+            <param name="behaviorConfiguration">一个行为节点名称</param>
+            <param name="serviceEndpoint">服务节点</param>
+            <param name="group">主配置节</param>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1">
+            <summary>
+            JSON帮助类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.ConvertJson(System.String)">
+            <summary>
+            JSON字符串反序列化转换对象
+            </summary>
+            <param name="url">URL</param>
+            <returns>指定的对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.ConvertJson(System.String,System.String)">
+            <summary>
+            JSON字符串反序列化转换对象
+            </summary>
+            <param name="url">URL</param>
+            <param name="postData">Post参数</param>
+            <returns>指定的对象</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.ConvertString(System.String)">
+            <summary>
+            JSON字符串反序列化转换字符串
+            </summary>
+            <param name="url">URL</param>
+            <returns>一个字符串</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.ConvertString(System.String,System.String)">
+            <summary>
+            JSON字符串反序列化转换字符串
+            </summary>
+            <param name="url">URL</param>
+            <param name="postData">Post参数</param>
+            <returns>一个字符串</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.VerifyErrorCode(System.String)">
+            <summary>
+            校验内容是否有错误
+            </summary>
+            <param name="content">返回的HTML内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.JsonHelper`1.PostFile(System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="file"></param>
+            <param name="nvc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.SignatureHelper">
+            <summary>
+            签名帮助类
+            </summary>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.SignatureHelper.GetSignatureUrl(System.String,System.String,System.String)">
+            <summary>
+            带签名和令牌信息的WebApi接口地址
+            </summary>
+            <param name="appId">应用ID</param>
+            <param name="appSecret">密钥</param>
+            <param name="token">访问令牌</param>
+            <returns>WebApi接口地址</returns>
+        </member>
+        <member name="M:AnyWise.Framework.ControlUtil.Facade.SignatureHelper.SignatureString(System.String,System.String,System.String)">
+            <summary>
+            签名的加密
+            </summary>
+            <param name="appSecret">密钥</param>
+            <param name="timestamp">时间戳</param>
+            <param name="nonce">随机字符串</param>
+            <returns>加密后的签名字符串</returns>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.SignatureInfo">
+            <summary>
+            签名
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.SignatureInfo.appid">
+            <summary>
+            应用ID
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.SignatureInfo.appsecret">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.SignatureInfo.token">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="T:AnyWise.Framework.ControlUtil.Facade.TokenResult">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.TokenResult.access_token">
+            <summary>
+            访问令牌
+            </summary>
+        </member>
+        <member name="P:AnyWise.Framework.ControlUtil.Facade.TokenResult.expires_in">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="11.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E7329616-CB1B-4599-A282-A4EC86E228B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnyWise.HWPMS.Core</RootNamespace>
+    <AssemblyName>AnyWise.HWPMS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>e2045e15</NuGetPackageImportStamp>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BLL\Biz\Bczd.cs" />
+    <Compile Include="BLL\Biz\Cbmxb.cs" />
+    <Compile Include="BLL\Biz\Gwzd.cs" />
+    <Compile Include="BLL\Biz\Hljxjjgzl.cs" />
+    <Compile Include="BLL\Biz\Hlssb.cs" />
+    <Compile Include="BLL\Biz\Jxcsb.cs" />
+    <Compile Include="BLL\Biz\Jxgssz.cs" />
+    <Compile Include="BLL\Biz\Jxgsszzb.cs" />
+    <Compile Include="BLL\Biz\Jxys.cs" />
+    <Compile Include="BLL\Biz\Jxyszb.cs" />
+    <Compile Include="BLL\Biz\Khflb.cs" />
+    <Compile Include="BLL\Biz\Khzbzd.cs" />
+    <Compile Include="BLL\Biz\Ksyrfyblb.cs" />
+    <Compile Include="BLL\Biz\Kszd.cs" />
+    <Compile Include="BLL\Biz\Ndmb.cs" />
+    <Compile Include="BLL\Biz\Ndmbzb.cs" />
+    <Compile Include="BLL\Biz\Ryzd.cs" />
+    <Compile Include="BLL\Biz\Srmxb.cs" />
+    <Compile Include="BLL\Biz\Xmjzsz.cs" />
+    <Compile Include="BLL\Biz\Xmlb.cs" />
+    <Compile Include="BLL\Biz\Xmzd.cs" />
+    <Compile Include="BLL\Biz\Ydjxkh.cs" />
+    <Compile Include="BLL\Biz\Ydjxkhzb.cs" />
+    <Compile Include="BLL\Biz\Ydmb.cs" />
+    <Compile Include="BLL\Biz\Ydmbzb.cs" />
+    <Compile Include="BLL\Biz\Yljxflgzl.cs" />
+    <Compile Include="BLL\Biz\Yljxfpcsb.cs" />
+    <Compile Include="BLL\Biz\Yljxfpsz.cs" />
+    <Compile Include="BLL\Biz\Yljxfpszzb.cs" />
+    <Compile Include="BLL\Biz\Yljxgzl.cs" />
+    <Compile Include="BLL\Biz\Yljxjjhz.cs" />
+    <Compile Include="BLL\Biz\Yljxjjmx.cs" />
+    <Compile Include="BLL\Biz\Yljxkh.cs" />
+    <Compile Include="BLL\Biz\Yljxkhzb.cs" />
+    <Compile Include="BLL\Biz\Yljxkhzbzd.cs" />
+    <Compile Include="BLL\Biz\Yljxkhzbzdzb.cs" />
+    <Compile Include="BLL\Biz\Zczd.cs" />
+    <Compile Include="BLL\Biz\Zxzd.cs" />
+    <Compile Include="BLL\CodeSet.cs" />
+    <Compile Include="BLL\ColumnMapping.cs" />
+    <Compile Include="BLL\DictData.cs" />
+    <Compile Include="BLL\DictType.cs" />
+    <Compile Include="BLL\Biz\Drgsgzl.cs" />
+    <Compile Include="BLL\DrgsSort.cs" />
+    <Compile Include="BLL\FileUpload.cs" />
+    <Compile Include="BLL\Function.cs" />
+    <Compile Include="BLL\ICD.cs" />
+    <Compile Include="BLL\Information.cs" />
+    <Compile Include="BLL\InformationStatus.cs" />
+    <Compile Include="BLL\Biz\JZXSLB.cs" />
+    <Compile Include="BLL\Biz\JZXSZD.cs" />
+    <Compile Include="BLL\LoginLog.cs" />
+    <Compile Include="BLL\Menu.cs" />
+    <Compile Include="BLL\OU.cs" />
+    <Compile Include="BLL\ProcStep.cs" />
+    <Compile Include="BLL\Role.cs" />
+    <Compile Include="BLL\SystemType.cs" />
+    <Compile Include="BLL\TableMapping.cs" />
+    <Compile Include="BLL\Task.cs" />
+    <Compile Include="BLL\User.cs" />
+    <Compile Include="BLL\View\View_RoleUsers.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Bczd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Cbmxb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Gwzd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Hljxjjgzl.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Hlssb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Jxcsb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Jxgssz.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Jxgsszzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Jxyszb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Jzys.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Khflb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Khzbzd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ksyrfyblb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Kszd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ndmb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ndmbzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ryzd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Srmxb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Xmjzsz.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Xmlb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Xmzd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ydjxkh.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ydjxkhzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ydmb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Ydmbzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxflgzl.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxfpcsb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxfpsz.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxfpszzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxgzl.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxjjhz.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxjjmx.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxkh.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxkhzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxkhzbzd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Yljxkhzbzdzb.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Zczd.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Zxzd.cs" />
+    <Compile Include="DAL\DALSQL\CodeSet.cs" />
+    <Compile Include="DAL\DALSQL\ColumnMapping.cs" />
+    <Compile Include="DAL\DALSQL\DictData.cs" />
+    <Compile Include="DAL\DALSQL\DictType.cs" />
+    <Compile Include="DAL\DALSQL\Biz\Drgsgzl.cs" />
+    <Compile Include="DAL\DALSQL\DrgsSort.cs" />
+    <Compile Include="DAL\DALSQL\FileUpload.cs" />
+    <Compile Include="DAL\DALSQL\Function.cs" />
+    <Compile Include="DAL\DALSQL\ICD.cs" />
+    <Compile Include="DAL\DALSQL\Information.cs" />
+    <Compile Include="DAL\DALSQL\InformationStatus.cs" />
+    <Compile Include="DAL\DALSQL\Biz\JZXSLB.cs" />
+    <Compile Include="DAL\DALSQL\Biz\JZXSZD.cs" />
+    <Compile Include="DAL\DALSQL\LoginLog.cs" />
+    <Compile Include="DAL\DALSQL\Menu.cs" />
+    <Compile Include="DAL\DALSQL\OU.cs" />
+    <Compile Include="DAL\DALSQL\ProcStep.cs" />
+    <Compile Include="DAL\DALSQL\Role.cs" />
+    <Compile Include="DAL\DALSQL\SystemType.cs" />
+    <Compile Include="DAL\DALSQL\TableMapping.cs" />
+    <Compile Include="DAL\DALSQL\Task.cs" />
+    <Compile Include="DAL\DALSQL\User.cs" />
+    <Compile Include="DAL\DALSQL\View\View_RoleUsers.cs" />
+    <Compile Include="Entity\AuthorizeKey.cs" />
+    <Compile Include="Entity\Biz\BczdInfo.cs" />
+    <Compile Include="Entity\Biz\CbmxbInfo.cs" />
+    <Compile Include="Entity\Biz\DrgsgzlInfo.cs" />
+    <Compile Include="Entity\Biz\GwzdInfo.cs" />
+    <Compile Include="Entity\Biz\HljxjjgzlInfo.cs" />
+    <Compile Include="Entity\Biz\HlssbInfo.cs" />
+    <Compile Include="Entity\Biz\JxcsbInfo.cs" />
+    <Compile Include="Entity\Biz\JxgsszInfo.cs" />
+    <Compile Include="Entity\Biz\JxgsszzbInfo.cs" />
+    <Compile Include="Entity\Biz\JxysInfo.cs" />
+    <Compile Include="Entity\Biz\JxyszbInfo.cs" />
+    <Compile Include="Entity\Biz\KhflbInfo.cs" />
+    <Compile Include="Entity\Biz\KhflbNodeInfo.cs" />
+    <Compile Include="Entity\Biz\KhzbzdInfo.cs" />
+    <Compile Include="Entity\Biz\KsyrfyblbInfo.cs" />
+    <Compile Include="Entity\Biz\KszdInfo.cs" />
+    <Compile Include="Entity\Biz\NdmbInfo.cs" />
+    <Compile Include="Entity\Biz\NdmbzbInfo.cs" />
+    <Compile Include="Entity\Biz\RyzdInfo.cs" />
+    <Compile Include="Entity\Biz\SrmxbInfo.cs" />
+    <Compile Include="Entity\Biz\XmjzszInfo.cs" />
+    <Compile Include="Entity\Biz\XmlbInfo.cs" />
+    <Compile Include="Entity\Biz\XmzdInfo.cs" />
+    <Compile Include="Entity\Biz\YdjxkhInfo.cs" />
+    <Compile Include="Entity\Biz\YdjxkhzbInfo.cs" />
+    <Compile Include="Entity\Biz\YdjxkhzbTreeGridInfo.cs" />
+    <Compile Include="Entity\Biz\YdmbInfo.cs" />
+    <Compile Include="Entity\Biz\YdmbzbInfo.cs" />
+    <Compile Include="Entity\Biz\YljxflgzlInfo.cs" />
+    <Compile Include="Entity\Biz\YljxfpcsbInfo.cs" />
+    <Compile Include="Entity\Biz\YljxfpszInfo.cs" />
+    <Compile Include="Entity\Biz\YljxfpszzbInfo.cs" />
+    <Compile Include="Entity\Biz\YljxgzlInfo.cs" />
+    <Compile Include="Entity\Biz\YljxjjhzInfo.cs" />
+    <Compile Include="Entity\Biz\YljxjjmxInfo.cs" />
+    <Compile Include="Entity\Biz\YljxkhInfo.cs" />
+    <Compile Include="Entity\Biz\YljxkhzbInfo.cs" />
+    <Compile Include="Entity\Biz\YljxkhzbzdInfo.cs" />
+    <Compile Include="Entity\Biz\YljxkhzbzdzbInfo.cs" />
+    <Compile Include="Entity\Biz\ZczdInfo.cs" />
+    <Compile Include="Entity\Biz\ZxzdInfo.cs" />
+    <Compile Include="Entity\CodeSetInfo.cs" />
+    <Compile Include="Entity\ColumnMappingInfo .cs" />
+    <Compile Include="Entity\DictDataInfo.cs" />
+    <Compile Include="Entity\DictTypeInfo.cs" />
+    <Compile Include="Entity\DictTypeNodeInfo.cs" />
+    <Compile Include="Entity\DrgsSortInfo.cs" />
+    <Compile Include="Entity\EasyComboTreeDataOU.cs" />
+    <Compile Include="Entity\FileUploadInfo.cs" />
+    <Compile Include="Entity\EasyTreeData.cs" />
+    <Compile Include="Entity\FunctionInfo.cs" />
+    <Compile Include="Entity\FunctionNodeInfo.cs" />
+    <Compile Include="Entity\ICDInfo.cs" />
+    <Compile Include="Entity\InformationCategory.cs" />
+    <Compile Include="Entity\InformationInfo.cs" />
+    <Compile Include="Entity\InformationStatusInfo.cs" />
+    <Compile Include="Entity\Biz\JZXSLBInfo.cs" />
+    <Compile Include="Entity\Biz\JZXSZDInfo.cs" />
+    <Compile Include="Entity\LoginLogInfo.cs" />
+    <Compile Include="Entity\LoginResult.cs" />
+    <Compile Include="Entity\MenuInfo.cs" />
+    <Compile Include="Entity\MenuNodeInfo.cs" />
+    <Compile Include="Entity\MyDenyAccessException.cs" />
+    <Compile Include="Entity\OUCategoryEnum.cs" />
+    <Compile Include="Entity\OUInfo.cs" />
+    <Compile Include="Entity\ProcStepInfo.cs" />
+    <Compile Include="Entity\RoleCategoryEnum.cs" />
+    <Compile Include="Entity\RoleInfo.cs" />
+    <Compile Include="Entity\SimpleUserInfo.cs" />
+    <Compile Include="Entity\SystemTypeInfo.cs" />
+    <Compile Include="Entity\TableMappingInfo.cs" />
+    <Compile Include="Entity\TaskInfo.cs" />
+    <Compile Include="Entity\UserImageType.cs" />
+    <Compile Include="Entity\UserInfo.cs" />
+    <Compile Include="Entity\View\View_RoleUsersInfo.cs" />
+    <Compile Include="IDAL\Biz\IBczd.cs" />
+    <Compile Include="IDAL\Biz\ICbmxb.cs" />
+    <Compile Include="IDAL\Biz\IDrgsgzl.cs" />
+    <Compile Include="IDAL\Biz\IGwzd.cs" />
+    <Compile Include="IDAL\Biz\IHljxjjgzl.cs" />
+    <Compile Include="IDAL\Biz\IHlssb.cs" />
+    <Compile Include="IDAL\Biz\IJxcsb.cs" />
+    <Compile Include="IDAL\Biz\IJxgssz.cs" />
+    <Compile Include="IDAL\Biz\IJxgsszzb.cs" />
+    <Compile Include="IDAL\Biz\IJxys.cs" />
+    <Compile Include="IDAL\Biz\IJxyszb.cs" />
+    <Compile Include="IDAL\Biz\IKhflb.cs" />
+    <Compile Include="IDAL\Biz\IKhzbzd.cs" />
+    <Compile Include="IDAL\Biz\IKsyrfyblb.cs" />
+    <Compile Include="IDAL\Biz\IKszd.cs" />
+    <Compile Include="IDAL\Biz\INdmb.cs" />
+    <Compile Include="IDAL\Biz\INdmbzb.cs" />
+    <Compile Include="IDAL\Biz\IRyzd.cs" />
+    <Compile Include="IDAL\Biz\ISrmxb.cs" />
+    <Compile Include="IDAL\Biz\IXmjzsz.cs" />
+    <Compile Include="IDAL\Biz\IXmlb.cs" />
+    <Compile Include="IDAL\Biz\IXmzd.cs" />
+    <Compile Include="IDAL\Biz\IYdjxkh.cs" />
+    <Compile Include="IDAL\Biz\IYdjxkhzb.cs" />
+    <Compile Include="IDAL\Biz\IYdmb.cs" />
+    <Compile Include="IDAL\Biz\IYdmbzb.cs" />
+    <Compile Include="IDAL\Biz\IYljxflgzl.cs" />
+    <Compile Include="IDAL\Biz\IYljxfpcsb.cs" />
+    <Compile Include="IDAL\Biz\IYljxfpsz.cs" />
+    <Compile Include="IDAL\Biz\IYljxfpszzb.cs" />
+    <Compile Include="IDAL\Biz\IYljxgzl.cs" />
+    <Compile Include="IDAL\Biz\IYljxjjhz.cs" />
+    <Compile Include="IDAL\Biz\IYljxjjmx.cs" />
+    <Compile Include="IDAL\Biz\IYljxkh.cs" />
+    <Compile Include="IDAL\Biz\IYljxkhzb.cs" />
+    <Compile Include="IDAL\Biz\IYljxkhzbzd.cs" />
+    <Compile Include="IDAL\Biz\IYljxkhzbzdzb.cs" />
+    <Compile Include="IDAL\Biz\IZczd.cs" />
+    <Compile Include="IDAL\Biz\IZxzd.cs" />
+    <Compile Include="IDAL\GInterface0.cs" />
+    <Compile Include="IDAL\ICodeSet.cs" />
+    <Compile Include="IDAL\IColumnMapping.cs" />
+    <Compile Include="IDAL\IDictData.cs" />
+    <Compile Include="IDAL\IDictType.cs" />
+    <Compile Include="IDAL\IDrgsSort.cs" />
+    <Compile Include="IDAL\IFileUpload.cs" />
+    <Compile Include="IDAL\IFunction.cs" />
+    <Compile Include="IDAL\IICD.cs" />
+    <Compile Include="IDAL\IInformation.cs" />
+    <Compile Include="IDAL\Biz\IJZXSLB.cs" />
+    <Compile Include="IDAL\Biz\IJZXSZD.cs" />
+    <Compile Include="IDAL\ILoginLog.cs" />
+    <Compile Include="IDAL\IMenu.cs" />
+    <Compile Include="IDAL\IOU.cs" />
+    <Compile Include="IDAL\IProcStep.cs" />
+    <Compile Include="IDAL\IRole.cs" />
+    <Compile Include="IDAL\ISystemType.cs" />
+    <Compile Include="IDAL\ITableMapping.cs" />
+    <Compile Include="IDAL\ITask.cs" />
+    <Compile Include="IDAL\IUser.cs" />
+    <Compile Include="IDAL\View\IView_RoleUsers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DAL\DALOracle\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyWise.Framework.Commons, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\AnyWise.Framework.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyWise.Framework.ControlUtil, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\AnyWise.Framework.ControlUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyWise.Pager.Entity, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\AnyWise.Pager.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="EntLibContrib.Data.SQLite, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\EnterpriseLibrary\EntLibContrib.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\EnterpriseLibrary\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\EnterpriseLibrary\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.0.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\EnterpriseLibrary\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

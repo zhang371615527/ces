@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AD46F80C-3DFA-4A0D-95A7-64BDACE37E9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnyWise.HWPMS.Callers</RootNamespace>
+    <AssemblyName>AnyWise.HWPMS.Caller</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AnyWise.HWPMS.Caller.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Facade\Biz\IDrgsgzlService.cs" />
+    <Compile Include="Facade\IColumnMappingService.cs" />
+    <Compile Include="Facade\IDrgsSortService.cs" />
+    <Compile Include="Facade\IICDService.cs" />
+    <Compile Include="Facade\IJZXSLBService.cs" />
+    <Compile Include="Facade\IJZXSZDService.cs" />
+    <Compile Include="Facade\ITableMappingService.cs" />
+    <Compile Include="Facade\View\iView_RoleUsersService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCaller\Biz\DrgsgzlCaller.cs" />
+    <Compile Include="ServiceCaller\ColumnMappingCaller.cs" />
+    <Compile Include="ServiceCaller\DrgsSortCaller.cs" />
+    <Compile Include="ServiceCaller\EndPointConfig.cs" />
+    <Compile Include="ServiceCaller\ICDCaller.cs" />
+    <Compile Include="ServiceCaller\JZXSLBCaller.cs" />
+    <Compile Include="ServiceCaller\JZXSZDCaller.cs" />
+    <Compile Include="ServiceCaller\TableMappingCaller.cs" />
+    <Compile Include="ServiceCaller\View\View_RoleUsersCaller.cs" />
+    <Compile Include="WebApiCaller\ApiConfig.cs" />
+    <Compile Include="Facade\Biz\ICbmxbService.cs" />
+    <Compile Include="ServiceCaller\Biz\CbmxbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\CbmxbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\DrgsgzlCaller.cs" />
+    <Compile Include="WebApiCaller\ColumnMappingCaller.cs" />
+    <Compile Include="WebApiCaller\DrgsSortCaller.cs" />
+    <Compile Include="WebApiCaller\ICDCaller.cs" />
+    <Compile Include="WebApiCaller\JZXSLBCaller.cs" />
+    <Compile Include="WebApiCaller\JZXSZDCaller.cs" />
+    <Compile Include="WebApiCaller\TableMappingCaller.cs" />
+    <Compile Include="WebApiCaller\View\View_RoleUsersCaller.cs" />
+    <Compile Include="WinformCaller\Biz\CbmxbCaller.cs" />
+    <Compile Include="Facade\Biz\IHljxjjgzlService.cs" />
+    <Compile Include="ServiceCaller\Biz\HljxjjgzlCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\HljxjjgzlCaller.cs" />
+    <Compile Include="WinformCaller\Biz\DrgsgzlCaller.cs" />
+    <Compile Include="WinformCaller\Biz\HljxjjgzlCaller.cs" />
+    <Compile Include="Facade\Biz\IHlssbService.cs" />
+    <Compile Include="ServiceCaller\Biz\HlssbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\HlssbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\HlssbCaller.cs" />
+    <Compile Include="Facade\Biz\IJxysService.cs" />
+    <Compile Include="ServiceCaller\Biz\JxysCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\JxysCaller.cs" />
+    <Compile Include="WinformCaller\Biz\JxysCaller.cs" />
+    <Compile Include="Facade\Biz\IJxyszbService.cs" />
+    <Compile Include="ServiceCaller\Biz\JxyszbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\JxyszbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\JxyszbCaller.cs" />
+    <Compile Include="Facade\Biz\IKhflbService.cs" />
+    <Compile Include="ServiceCaller\Biz\KhflbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\KhflbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\KhflbCaller.cs" />
+    <Compile Include="Facade\Biz\IKsyrfyblbService.cs" />
+    <Compile Include="ServiceCaller\Biz\KsyrfyblbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\KsyrfyblbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\KsyrfyblbCaller.cs" />
+    <Compile Include="Facade\Biz\INdmbService.cs" />
+    <Compile Include="ServiceCaller\Biz\NdmbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\NdmbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\NdmbCaller.cs" />
+    <Compile Include="Facade\Biz\INdmbzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\NdmbzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\NdmbzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\NdmbzbCaller.cs" />
+    <Compile Include="Facade\Biz\ISrmxbService.cs" />
+    <Compile Include="ServiceCaller\Biz\SrmxbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\SrmxbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\SrmxbCaller.cs" />
+    <Compile Include="Facade\Biz\IYdjxkhService.cs" />
+    <Compile Include="ServiceCaller\Biz\YdjxkhCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YdjxkhCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YdjxkhCaller.cs" />
+    <Compile Include="Facade\Biz\IYdjxkhzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YdjxkhzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YdjxkhzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YdjxkhzbCaller.cs" />
+    <Compile Include="Facade\Biz\IYdmbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YdmbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YdmbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YdmbCaller.cs" />
+    <Compile Include="Facade\Biz\IYdmbzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YdmbzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YdmbzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YdmbzbCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxflgzlService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxflgzlCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxflgzlCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxflgzlCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxfpszService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxfpszCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxfpszCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxfpszCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxfpszzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxfpszzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxfpszzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxfpszzbCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxgzlService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxgzlCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxgzlCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxgzlCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxjjhzService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxjjhzCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxjjhzCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxjjhzCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxjjmxService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxjjmxCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxjjmxCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxjjmxCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxkhService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxkhCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxkhCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxkhCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxkhzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxkhzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxkhzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxkhzbCaller.cs" />
+    <Compile Include="Facade\IFunctionService.cs" />
+    <Compile Include="ServiceCaller\FunctionCaller.cs" />
+    <Compile Include="WebApiCaller\FunctionCaller.cs" />
+    <Compile Include="WinformCaller\ColumnMappingCaller.cs" />
+    <Compile Include="WinformCaller\DrgsSortCaller.cs" />
+    <Compile Include="WinformCaller\FunctionCaller.cs" />
+    <Compile Include="Facade\ILoginLogService.cs" />
+    <Compile Include="ServiceCaller\LoginLogCaller.cs" />
+    <Compile Include="WebApiCaller\LoginLogCaller.cs" />
+    <Compile Include="WinformCaller\ICDCaller.cs" />
+    <Compile Include="WinformCaller\JZXSLBCaller.cs" />
+    <Compile Include="WinformCaller\JZXSZDCaller.cs" />
+    <Compile Include="WinformCaller\LoginLogCaller.cs" />
+    <Compile Include="Facade\IMenuService.cs" />
+    <Compile Include="ServiceCaller\MenuCaller.cs" />
+    <Compile Include="WebApiCaller\MenuCaller.cs" />
+    <Compile Include="WinformCaller\MenuCaller.cs" />
+    <Compile Include="Facade\IOuService.cs" />
+    <Compile Include="ServiceCaller\OuCaller.cs" />
+    <Compile Include="WebApiCaller\OuCaller.cs" />
+    <Compile Include="WinformCaller\OuCaller.cs" />
+    <Compile Include="Facade\IRoleService.cs" />
+    <Compile Include="ServiceCaller\RoleCaller.cs" />
+    <Compile Include="WebApiCaller\RoleCaller.cs" />
+    <Compile Include="WinformCaller\RoleCaller.cs" />
+    <Compile Include="Facade\ISystemTypeService.cs" />
+    <Compile Include="ServiceCaller\SystemTypeCaller.cs" />
+    <Compile Include="WebApiCaller\SystemTypeCaller.cs" />
+    <Compile Include="WinformCaller\SystemTypeCaller.cs" />
+    <Compile Include="Facade\IUserService.cs" />
+    <Compile Include="ServiceCaller\UserCaller.cs" />
+    <Compile Include="WebApiCaller\UserCaller.cs" />
+    <Compile Include="WinformCaller\TableMappingCaller.cs" />
+    <Compile Include="WinformCaller\UserCaller.cs" />
+    <Compile Include="Facade\ICodeSetService.cs" />
+    <Compile Include="ServiceCaller\CodeSetCaller.cs" />
+    <Compile Include="WebApiCaller\CodeSetCaller.cs" />
+    <Compile Include="WinformCaller\CodeSetCaller.cs" />
+    <Compile Include="Facade\IDictDataService.cs" />
+    <Compile Include="ServiceCaller\DictDataCaller.cs" />
+    <Compile Include="WebApiCaller\DictDataCaller.cs" />
+    <Compile Include="WinformCaller\DictDataCaller.cs" />
+    <Compile Include="Facade\IDictTypeService.cs" />
+    <Compile Include="ServiceCaller\DictTypeCaller.cs" />
+    <Compile Include="WebApiCaller\DictTypeCaller.cs" />
+    <Compile Include="WinformCaller\DictTypeCaller.cs" />
+    <Compile Include="Facade\IFileUploadService.cs" />
+    <Compile Include="ServiceCaller\FileUploadCaller.cs" />
+    <Compile Include="WebApiCaller\FileUploadCaller.cs" />
+    <Compile Include="WinformCaller\FileUploadCaller.cs" />
+    <Compile Include="Facade\IInformationService.cs" />
+    <Compile Include="ServiceCaller\InformationCaller.cs" />
+    <Compile Include="WebApiCaller\InformationCaller.cs" />
+    <Compile Include="WinformCaller\InformationCaller.cs" />
+    <Compile Include="Facade\Biz\IJxcsbService.cs" />
+    <Compile Include="ServiceCaller\Biz\JxcsbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\JxcsbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\JxcsbCaller.cs" />
+    <Compile Include="Facade\Biz\IJxgsszService.cs" />
+    <Compile Include="ServiceCaller\Biz\JxgsszCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\JxgsszCaller.cs" />
+    <Compile Include="WinformCaller\Biz\JxgsszCaller.cs" />
+    <Compile Include="Facade\Biz\IJxgsszzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\JxgsszzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\JxgsszzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\JxgsszzbCaller.cs" />
+    <Compile Include="Facade\Biz\IRyzdService.cs" />
+    <Compile Include="ServiceCaller\Biz\RyzdCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\RyzdCaller.cs" />
+    <Compile Include="WinformCaller\Biz\RyzdCaller.cs" />
+    <Compile Include="Facade\Biz\IXmlbService.cs" />
+    <Compile Include="ServiceCaller\Biz\XmlbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\XmlbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\XmlbCaller.cs" />
+    <Compile Include="Facade\Biz\IXmzdService.cs" />
+    <Compile Include="ServiceCaller\Biz\XmzdCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\XmzdCaller.cs" />
+    <Compile Include="WinformCaller\Biz\XmzdCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxfpcsbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxfpcsbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxfpcsbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxfpcsbCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxkhzbzdService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxkhzbzdCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxkhzbzdCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxkhzbzdCaller.cs" />
+    <Compile Include="Facade\Biz\IYljxkhzbzdzbService.cs" />
+    <Compile Include="ServiceCaller\Biz\YljxkhzbzdzbCaller.cs" />
+    <Compile Include="WebApiCaller\Biz\YljxkhzbzdzbCaller.cs" />
+    <Compile Include="WinformCaller\Biz\YljxkhzbzdzbCaller.cs" />
+    <Compile Include="Facade\IProcStepService.cs" />
+    <Compile Include="ServiceCaller\ProcStepCaller.cs" />
+    <Compile Include="WebApiCaller\ProcStepCaller.cs" />
+    <Compile Include="WinformCaller\ProcStepCaller.cs" />
+    <Compile Include="Facade\ITaskService.cs" />
+    <Compile Include="ServiceCaller\TaskCaller.cs" />
+    <Compile Include="WebApiCaller\TaskCaller.cs" />
+    <Compile Include="WinformCaller\TaskCaller.cs" />
+    <Compile Include="WinformCaller\View\View_RoleUsersCaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AnyWise.HWPMS.Caller.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="AnyWise.Framework.Commons, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\AnyWise.Framework.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyWise.Framework.ControlUtil, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\AnyWise.Framework.ControlUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyWise.HWPMS.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AnyWise.HWPMS.Core\bin\Debug\AnyWise.HWPMS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AnyWise.Pager.Entity, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\AnyWise.Pager.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
